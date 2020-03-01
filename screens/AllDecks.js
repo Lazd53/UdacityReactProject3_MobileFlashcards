@@ -22,7 +22,9 @@ class AllDecks extends React.Component {
     return (
       <View style={styles.container}>
         <Text> All Decks </Text>
-        { keys.map( key => <DeckBtn DeckInfo = {allDecks["mulitiplication"]}/>)}
+        { keys.map( key => {
+          console.log(allDecks[key])
+          return <DeckBtn key={key} DeckInfo = {allDecks[key]}/>})}
       </View>
     );
   }

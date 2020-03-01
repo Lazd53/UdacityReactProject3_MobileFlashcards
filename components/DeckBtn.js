@@ -5,7 +5,7 @@ import { View, Button, Text, StyleSheet } from 'react-native';
 export default function DeckBtn ({DeckInfo}) {
   return (
     <View style = {styles.deck}>
-      <Text> "Test"  </Text>
+      <Text style={styles.deckName}> {DeckInfo.title} </Text>
     </View>
   )
 }
@@ -32,7 +32,6 @@ const styles = StyleSheet.create({
     elevation: 20
   },
   deckName: {
-    position: "absolute",
 
   }
 
