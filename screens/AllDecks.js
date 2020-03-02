@@ -38,7 +38,6 @@ class AllDecks extends React.Component {
         <ScrollView style={styles.scrollViewStyling}>
           <View style={styles.decksContainer}>
           { keys.map( key => {
-            console.log(allDecks[key])
             return <DeckBtn key={key} DeckInfo = {allDecks[key]}/>})}
           </View>
         </ScrollView>
@@ -72,5 +71,3 @@ const styles = StyleSheet.create({
 
   }
 });
-
-// <NavBtn text="Add a Deck" callback={this.navigateToAddDeck} />

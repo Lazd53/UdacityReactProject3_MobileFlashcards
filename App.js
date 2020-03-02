@@ -42,7 +42,3 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
 });
-
-// <Tab.Screen name="Decks" component={Decks} />
-// <Tab.Screen name="Groups" component={Groups} />
-// <Tab.Screen name="Quizzes" component={Quizzes} />
