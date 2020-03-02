@@ -1,12 +1,15 @@
 import React from 'react';
-import { View, Button, Text, StyleSheet } from 'react-native';
+import { View, Button, Text, StyleSheet, TouchableWithoutFeedback } from 'react-native';
 
 
 export default function DeckBtn ({DeckInfo}) {
+
   return (
-    <View style = {styles.deck}>
-      <Text style={styles.deckName}> {DeckInfo.title} </Text>
-    </View>
+    <TouchableWithoutFeedback onPress={()=> alert('This got pressed')}>
+      <View style = {styles.deck}>
+        <Text style={styles.deckName}> {DeckInfo.title} </Text>
+      </View>
+    </TouchableWithoutFeedback>
   )
 }
 
@@ -29,10 +32,11 @@ const styles = StyleSheet.create({
     borderBottomWidth: 3,
     borderRadius: 7,
     backgroundColor: '#fff',
-    elevation: 20
+    elevation: 20,
+    marginBottom: 20
   },
   deckName: {
-
+    textAlign: "center"
   }
 
 });
