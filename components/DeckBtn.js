@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     height: 175,
-    width: 125,
+    width: 130,
     borderColor: "black",
     borderWidth: 2,
     borderStyle: "solid",
@@ -32,11 +32,12 @@ const styles = StyleSheet.create({
     borderBottomWidth: 3,
     borderRadius: 7,
     backgroundColor: '#fff',
-    elevation: 20,
+    elevation: 10,
     marginBottom: 20
   },
   deckName: {
-    textAlign: "center"
+    textAlign: "center",
+    fontSize: 20
   }
 
 });
