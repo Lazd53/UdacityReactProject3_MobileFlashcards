@@ -2,10 +2,10 @@ import React from 'react';
 import { View, Button, Text, StyleSheet, TouchableWithoutFeedback } from 'react-native';
 
 
-export default function DeckBtn ({DeckInfo}) {
+export default function DeckBtn ({DeckInfo, callback}) {
 
   return (
-    <TouchableWithoutFeedback onPress={()=> alert('This got pressed')}>
+    <TouchableWithoutFeedback onPress={()=> callback()}>
       <View style = {styles.deck}>
         <Text style={styles.deckName}> {DeckInfo.title} </Text>
       </View>

@@ -13,6 +13,12 @@ class AllDecks extends React.Component {
     navigation.navigate('Add a Deck');
   }
 
+  navigateToSingleDeck = () => {
+    const { navigation } = this.props;
+
+    navigation.navigate('Single Deck')
+  }
+
   render(){
     const { navigation } = this.props
     const allDecks = {
@@ -39,7 +45,7 @@ class AllDecks extends React.Component {
         <ScrollView style={styles.scrollViewStyling}>
           <View style={styles.decksContainer}>
           { keys.map( key => {
-            return <DeckBtn key={key} DeckInfo = {allDecks[key]}/>})}
+            return <DeckBtn key={key} callback = {this.navigateToSingleDeck} DeckInfo = {allDecks[key]}/>})}
           </View>
         </ScrollView>
         <NavBtn text="Add a Deck" callback={this.navigateToAddDeck}/>

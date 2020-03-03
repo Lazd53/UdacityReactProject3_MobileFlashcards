@@ -8,6 +8,7 @@ import AllDecks from '../screens/AllDecks';
 import AddDeck from '../screens/AddDeck';
 import EditDeck from '../screens/EditDeck';
 import DeleteDeck from '../screens/DeleteDeck';
+import SingleDeck from '../screens/SingleDeck';
 
 const stack = createStackNavigator();
 
@@ -18,6 +19,7 @@ export default function DecksNav (props){
       <View style={styles.container}>
         <stack.Navigator initialRouteName="All Decks">
           <stack.Screen name="All Decks" component={AllDecks}/>
+          <stack.Screen name="Single Deck" component={SingleDeck}/>
           <stack.Screen name="Add a Deck" component={AddDeck}/>
           <stack.Screen name="Edit Deck" component={EditDeck}/>
           <stack.Screen name="Delete Deck" component={DeleteDeck}/>
