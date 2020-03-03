@@ -2,9 +2,9 @@ import React from 'react';
 import { View, Text, TouchableWithoutFeedback, StyleSheet} from 'react-native';
 
 
-export default function NavBtn ({text, navigation, to}) {
+export default function NavBtn ({text, callback}) {
   return (
-    <TouchableWithoutFeedback onPress={() => navigation.navigate(to)}>
+    <TouchableWithoutFeedback onPress={ () => callback() }>
       <View style={styles.container}>
         <Text style={styles.text}>{text}</Text>
       </View>

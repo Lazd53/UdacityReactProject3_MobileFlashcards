@@ -2,14 +2,15 @@ import * as React from 'react';
 import { Image, Platform, StyleSheet, Text, Button, View, TouchableWithoutFeedback } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 
+// Import Components
 import DeckBtn from '../components/DeckBtn';
 import NavBtn from '../components/NavBtn';
 
 class AllDecks extends React.Component {
 
-  navigateToAddDeck(){
+  navigateToAddDeck = () => {
     const { navigation } = this.props;
-    navigation.navigate('Add a Deck')
+    navigation.navigate('Add a Deck');
   }
 
   render(){
@@ -41,7 +42,7 @@ class AllDecks extends React.Component {
             return <DeckBtn key={key} DeckInfo = {allDecks[key]}/>})}
           </View>
         </ScrollView>
-        <NavBtn text="Add a Deck" navigation={navigation} to="Add a Deck" />
+        <NavBtn text="Add a Deck" callback={this.navigateToAddDeck}/>
       </View>
     );
   }
