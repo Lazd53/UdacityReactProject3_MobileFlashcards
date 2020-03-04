@@ -7,8 +7,9 @@ import NavBtn from '../components/NavBtn';
 
 
 class SingleDeck extends React.Component{
-
+  
   render(){
+    const { navigation } = this.props;
     return (
       <View style={styles.container}>
         <View style={styles.txtContainer}>
@@ -17,7 +18,7 @@ class SingleDeck extends React.Component{
         </View>
         <View style={styles.btnContainer}>
           <NavBtn text="Start Quiz" callback={()=>{}} />
-          <NavBtn text="Add Card" callback={()=>{}} />
+          <NavBtn text="Add Card" callback={() => navigation.navigate("Add Card")} />
           <NavBtn text="Delete Deck" callback={()=>{}} />
         </View>
       </View>
