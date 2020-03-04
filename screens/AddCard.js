@@ -15,6 +15,7 @@ class AddCard extends React.Component{
     const { navigation } = this.props;
     // TODO Add card to Async
     // TODO add card to Redux store
+    console.alert( this.state.newCardQuestion, this.state.newCardAnswer)
     this.setState( { newCardName: "", newCardAnswer: ""});
     navigation.navigate("SingleDeck")
   }
@@ -30,18 +31,20 @@ class AddCard extends React.Component{
   render(){
     return (
       <View style={styles.container}>
-        <TextInput
-          style={styles.inputField}
-          placeholder = "New Question"
-          onChangeText = {(text) => this.handleQuestion(text)}
-          value = {this.state.newDeckName}
-        />
-        <TextInput
-          style={styles.inputField}
-          placeholder = "Enter Answer"
-          onChangeText = {(text) => this.handleAnswer(text)}
-          value = {this.state.newDeckName}
-        />
+        <View style={styles.inputContainer}>
+          <TextInput
+            style={styles.inputField}
+            placeholder = "New Question"
+            onChangeText = {(text) => this.handleQuestion(text)}
+            value = {this.state.newCardQuestion}
+          />
+          <TextInput
+            style={styles.inputField}
+            placeholder = "Enter Answer"
+            onChangeText = {(text) => this.handleAnswer(text)}
+            value = {this.state.newCardAnswer}
+          />
+        </View>
         <NavBtn text="Add Card" callback={this.handleSubmit} />
       </View>
     );
@@ -55,7 +58,15 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     alignItems: "center",
-    justifyContent: "space-around"
+    justifyContent: "space-between",
+    paddingTop: 50,
+    paddingBottom: 20
+  },
+  inputContainer: {
+    width: "100%",
+    height: 130,
+    alignItems: "center",
+    justifyContent: "space-between"
   },
   inputField: {
       height: 50,
