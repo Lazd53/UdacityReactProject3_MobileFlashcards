@@ -1,13 +1,12 @@
 import * as React from 'react';
 import { Text, Image, Platform, StyleSheet, TouchableOpacity, View } from 'react-native';
-import { ScrollView } from 'react-native-gesture-handler';
 
 // Import Components
 import NavBtn from '../components/NavBtn';
 
 
 class SingleDeck extends React.Component{
-  
+
   render(){
     const { navigation } = this.props;
     return (
@@ -19,7 +18,7 @@ class SingleDeck extends React.Component{
         <View style={styles.btnContainer}>
           <NavBtn text="Start Quiz" callback={()=>{}} />
           <NavBtn text="Add Card" callback={() => navigation.navigate("Add Card")} />
-          <NavBtn text="Delete Deck" callback={()=>{}} />
+          <NavBtn text="Delete Deck" callback={()=>navigation.navigate("Delete Deck")} />
         </View>
       </View>
     );
