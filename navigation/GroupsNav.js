@@ -5,7 +5,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import AllGroups from '../screens/AllGroups';
 import EditGroup from '../screens/EditGroup';
 import DeleteGroup from '../screens/DeleteGroup';
-// import AddGroups from '../screens/AddGroup';
+import AddGroup from '../screens/AddGroup';
 
 const stack = createStackNavigator();
 
@@ -16,6 +16,7 @@ export default function GroupsNav(props) {
           <stack.Screen name="AllGroups" component={AllGroups}/>
           <stack.Screen name="EditGroup" component={EditGroup}/>
           <stack.Screen name="DeleteGroup" component={DeleteGroup}/>
+          <stack.Screen name="AddGroup" component={AddGroup}/>
         </stack.Navigator>
       </View>
     )
