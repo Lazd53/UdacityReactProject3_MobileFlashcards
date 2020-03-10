@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Text, Image, Platform, StyleSheet, TouchableOpacity, View } from 'react-native';
+import { Text, StyleSheet, TouchableOpacity, View } from 'react-native';
 
 // Import Components
 import NavBtn from '../components/NavBtn';

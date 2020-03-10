@@ -1,11 +1,13 @@
 import * as React from 'react';
-import { Image, Platform, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 
 // Components
 import NavBtn from '../components/NavBtn';
 import DeckList from '../components/DeckList';
 
+// TODO
+  // Change nav header to say name of group
 
 class EditGroup extends React.Component{
 

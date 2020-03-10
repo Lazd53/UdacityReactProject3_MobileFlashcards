@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Image, Platform, StyleSheet, Text, Button, View, TouchableWithoutFeedback } from 'react-native';
+import { StyleSheet, Text, Button, View, TouchableWithoutFeedback } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 
 // Import Components
