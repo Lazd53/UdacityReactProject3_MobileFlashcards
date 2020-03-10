@@ -15,7 +15,8 @@ class AddGroup extends React.Component{
     this.setState( { newDeckName: ""});
     // TODO Add deck to Async
     // TODO add deck to Redux store
-    navigation.navigate("All Decks")
+    console.log('test')
+    navigation.navigate("AllGroups")
   }
 
   controlText = (newText) => {
@@ -51,7 +52,7 @@ class AddGroup extends React.Component{
             />
         </ScrollView>
 
-        <NavBtn text="Add Group" callback={()=>{}} />
+        <NavBtn text="Add Group" callback={this.addGroup} />
       </View>
     );
   }
