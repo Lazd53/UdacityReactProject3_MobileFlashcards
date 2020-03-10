@@ -1,15 +1,29 @@
 import React from 'react'
-import { View, Text } from 'react-native'
+import { View, Text, StyleSheet } from 'react-native'
+import { createStackNavigator } from '@react-navigation/stack';
 
-class GroupsNav extends React.Component{
+import AllGroups from '../screens/AllGroups';
+import EditGroup from '../screens/EditGroup';
+// import AddGroups from '../screens/AddGroup';
 
-  render() {
+const stack = createStackNavigator();
+
+export default function GroupsNav(props) {
     return(
-      <View>
-        <Text> Groups! </Text>
+      <View style={styles.container}>
+        <stack.Navigator initialRouteName="AllGroups">
+          <stack.Screen name="AllGroups" component={AllGroups}/>
+          <stack.Screen name="EditGroup" component={EditGroup}/>
+        </stack.Navigator>
       </View>
     )
-  }
 }
 
-export default GroupsNav;
+
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+  },
+});
