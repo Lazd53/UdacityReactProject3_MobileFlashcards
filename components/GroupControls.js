@@ -10,11 +10,11 @@ class GroupControls extends React.Component {
     // open
   }
   handleDelete = () =>{
-
+    const {navigation} = this.props;
+    navigation.navigate('DeleteGroup')
   }
 
   handleEdit = () =>{
-    console.log("triggered")
     const {navigation } = this.props;
     navigation.navigate('EditGroup')
   }
@@ -29,7 +29,11 @@ class GroupControls extends React.Component {
       <View style={styles.container}>
         <View style={styles.titleAndDelete}>
           <Text style={styles.title}>{title}</Text>
-          <GroupControlBtn size={30} icon={<AntDesign name="delete" size={15} />} />
+          <GroupControlBtn
+            size={30}
+            icon={<AntDesign name="delete" size={15} />}
+            callback={this.handleDelete}
+          />
         </View>
         <View style={styles.btnsContainer}>
           <GroupControlBtn
