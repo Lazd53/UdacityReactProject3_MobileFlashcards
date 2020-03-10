@@ -51,7 +51,7 @@ class AddGroup extends React.Component{
             />
         </ScrollView>
 
-        <NavBtn text="Edit Group" callback={()=>{}} />
+        <NavBtn text="Add Group" callback={()=>{}} />
       </View>
     );
   }
