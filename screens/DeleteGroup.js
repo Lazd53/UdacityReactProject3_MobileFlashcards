@@ -22,7 +22,7 @@ class DeleteGroup extends React.Component {
         </View>
         <View style={styles.btnContainer}>
           <NavBtn text="Yes, I'm sure" callback={ this.handleDeleteDeck } />
-          <NavBtn text="Oh no, hold on" callback={() => navigation.navigate("Single Deck")} />
+          <NavBtn text="Oh no, hold on" callback={() => navigation.navigate("AllGroups")} />
         </View>
       </View>
     );

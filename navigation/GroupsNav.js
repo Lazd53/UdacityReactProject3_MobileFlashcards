@@ -2,6 +2,7 @@ import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 import { createStackNavigator } from '@react-navigation/stack';
 
+// Screens
 import AllGroups from '../screens/AllGroups';
 import EditGroup from '../screens/EditGroup';
 import DeleteGroup from '../screens/DeleteGroup';

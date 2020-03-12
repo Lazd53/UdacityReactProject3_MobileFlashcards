@@ -15,9 +15,8 @@ class AddCard extends React.Component{
     const { navigation } = this.props;
     // TODO Add card to Async
     // TODO add card to Redux store
-    console.alert( this.state.newCardQuestion, this.state.newCardAnswer)
     this.setState( { newCardName: "", newCardAnswer: ""});
-    navigation.navigate("SingleDeck")
+    navigation.navigate("Single Deck")
   }
 
   handleQuestion = (newText) => {
