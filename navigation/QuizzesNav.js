@@ -1,15 +1,29 @@
-import React from 'react'
-import { View, Text } from 'react-native'
+import React from 'react';
+import { View, Text, StyleSheet } from 'react-native';
+import { createStackNavigator } from '@react-navigation/stack';
 
-class QuizzesNav extends React.Component{
+// Screens
+import QuizQuestionScreen from '../screens/QuizQuestionScreen';
+import QuizAnswerScreen from '../screens/QuizAnswerScreen';
+import QuizScoresScreen from '../screens/QuizScoresScreen';
 
-  render() {
+const stack = createStackNavigator();
+
+export default function QuizzesNav(props){
+
     return(
-      <View>
-        <Text> Quizzes! </Text>
+      <View style={styles.container}>
+        <stack.Navigator initialRouteName="QuizQuestion">
+          <stack.Screen name="QuizQuestion" component={QuizQuestionScreen}/>
+          <stack.Screen name="QuizAnswer" component={QuizAnswerScreen}/>
+          <stack.Screen name="QuizScores" component={QuizScoresScreen}/>
+        </stack.Navigator>
       </View>
     )
-  }
 }
 
-export default QuizzesNav;
+const styles = StyleSheet.create({
+  container: {
+    flex: 1
+  }
+});
