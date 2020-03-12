@@ -11,11 +11,9 @@ import DeckList from '../components/DeckList';
 
 class EditGroup extends React.Component{
 
-  handleAddDeck = () => {
-    console.log("add deck")
-  };
-  handleRemoveDeck = () => {
-    console.log("remove deck")
+  handleEditGroup = () => {
+    const { navigation } = this.props;
+    navigation.navigate('AllGroups')
   };
   render(){
     return (
@@ -33,7 +31,7 @@ class EditGroup extends React.Component{
             />
         </ScrollView>
 
-        <NavBtn text="Edit Group" callback={()=>{}} />
+        <NavBtn text="Edit Group" callback={this.handleEditGroup} />
       </View>
     );
   }
