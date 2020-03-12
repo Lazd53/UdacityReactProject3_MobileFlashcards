@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import { Ionicons, Feather, AntDesign } from '@expo/vector-icons';
+import { Ionicons, Feather, AntDesign, Entypo } from '@expo/vector-icons';
 import { isIOS } from '../utils/helpers'
 
 import GroupControlBtn from './GroupControlBtn'
@@ -38,10 +38,7 @@ class GroupControls extends React.Component {
         <View style={styles.btnsContainer}>
           <GroupControlBtn
             size={50}
-            icon={ isIOS()
-                    ? <Ionicons name="ios-book" size={30} />
-                  : <Feather  name="book-open" size={30} />
-                  }
+            icon={ <Entypo name="book" size={30} /> }
           />
           <GroupControlBtn
             callback = {this.handleEdit}
