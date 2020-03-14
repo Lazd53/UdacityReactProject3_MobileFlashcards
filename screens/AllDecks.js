@@ -19,8 +19,16 @@ class AllDecks extends React.Component {
     navigation.navigate('Single Deck')
   }
 
+  renderDecks = (decks) => {
+    let allDecks = decks.map( (deck) => {
+      const deckInfo = Object.values(deck)[0];
+      return (<DeckBtn key={deckInfo.id} callback = {this.navigateToSingleDeck} DeckInfo = {deckInfo}/>)
+    } )
+    return allDecks
+  }
+
   render(){
-    const { navigation } = this.props
+    const { navigation, decks } = this.props
     const allDecks = {
       multiplication: {
         title: "Multiplication"
@@ -44,8 +52,10 @@ class AllDecks extends React.Component {
       <View style={styles.container}>
         <ScrollView style={styles.scrollViewStyling}>
           <View style={styles.decksContainer}>
-          { keys.map( key => {
-            return <DeckBtn key={key} callback = {this.navigateToSingleDeck} DeckInfo = {allDecks[key]}/>})}
+            {decks.length === 0
+                ? <Text style={styles.addDeckCallToAction}>Add a deck to start!</Text>
+                : this.renderDecks( this.props.decks )
+            }
           </View>
         </ScrollView>
         <NavBtn text="Add a Deck" callback={this.navigateToAddDeck}/>
@@ -56,7 +66,7 @@ class AllDecks extends React.Component {
 
 const mapStateToProps = (state) => {
   return{
-    state: state
+    decks: state.Decks
   }
 }
 
@@ -81,6 +91,13 @@ const styles = StyleSheet.create({
     alignContent: "space-between",
     justifyContent: "space-between",
     flexDirection: "row",
-
+  },
+  addDeckCallToAction: {
+    fontSize: 28,
+    flex: 1,
+    textAlign: 'center'
   }
 });
+
+// { keys.map( key => {
+//   return <DeckBtn key={key} callback = {this.navigateToSingleDeck} DeckInfo = {allDecks[key]}/>})}

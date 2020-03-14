@@ -7,7 +7,7 @@ export default function DeckBtn ({DeckInfo, callback}) {
   return (
     <TouchableWithoutFeedback onPress={()=> callback()}>
       <View style = {styles.deck}>
-        <Text style={styles.deckName}> {DeckInfo.title} </Text>
+        <Text style={styles.deckName}> {DeckInfo.name} </Text>
       </View>
     </TouchableWithoutFeedback>
   )
