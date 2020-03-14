@@ -1,5 +1,4 @@
 import {Platform } from 'react-native';
-import { Ionicons, Feather, AntDesign } from '@expo/vector-icons';
 
 export function isIOS (){
   if (Platform.OS === "ios"){
@@ -7,4 +6,8 @@ export function isIOS (){
   }else{
     return false
   }
+}
+
+export function generateID () {
+  return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
 }

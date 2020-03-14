@@ -2,18 +2,28 @@ import {
   CREATE_DECK,
   EDIT_DECK,
   DELETE_DECK,
-  ADD_QUESTION
+  ADD_CARD
 } from '../actions/DecksAction';
+
+function formatDeck (deckId, deckName){
+  return {
+    id: deckId,
+    cards: [],
+    name: deckName
+  }
+}
 
 export function Decks ( state = [], action){
   switch(action.type){
     case CREATE_DECK :
-      return state.concat(action.deck);
+      let {deckName, id} = action;
+      let formattedDeck = formatDeck(id, deckName)
+      return state.concat( { [id] : formattedDeck } );
     case EDIT_DECK :
       return {...state};
     case DELETE_DECK :
       return {...state.filter( deck => deck.id !== action.deckId)};
-    case ADD_QUESTION :
+    case ADD_CARD :
       return {...state};
     default:
       return state;
