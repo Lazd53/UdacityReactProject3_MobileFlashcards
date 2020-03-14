@@ -1,9 +1,13 @@
 import * as React from 'react';
 import { StyleSheet, TextInput, TouchableOpacity, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
+import { connect } from 'react-redux';
 
 // Import Components
 import NavBtn from '../components/NavBtn';
+
+// Import Actions
+// import { handleAddCard } from '../actions/AddCard';
 
 
 class AddCard extends React.Component{
@@ -49,6 +53,20 @@ class AddCard extends React.Component{
     );
   }
 }
+
+// const mapStateToProps = (state) => {
+//   return{
+//     state: state
+//   }
+// }
+//
+// const mapDispatchToProps = { addCard }
+//
+// export default connect({
+//   mapStateToProps,
+//   mapDispatchToProps
+// })(AddCard);
+
 
 export default AddCard;
 

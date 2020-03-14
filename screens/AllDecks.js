@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { StyleSheet, Text, View, TouchableWithoutFeedback } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
-
+import { connect } from 'react-redux';
 // Import Components
 import DeckBtn from '../components/DeckBtn';
 import NavBtn from '../components/NavBtn';
@@ -54,7 +54,13 @@ class AllDecks extends React.Component {
   }
 }
 
-export default AllDecks;
+const mapStateToProps = (state) => {
+  return{
+    state: state
+  }
+}
+
+export default connect(mapStateToProps)(AllDecks);
 
 const styles = StyleSheet.create({
   container: {

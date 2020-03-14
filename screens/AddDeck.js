@@ -1,19 +1,23 @@
 import * as React from 'react';
-import { StyleSheet, TextInput, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, TextInput, TouchableOpacity, View, AsyncStorage } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
+import { connect } from 'react-redux';
+
 
 // Import Components
 import NavBtn from '../components/NavBtn';
-
+import { handleCreateDeck, createDeck } from "../actions/DecksAction";
 
 class AddDeck extends React.Component{
   state = { newDeckName: ""}
 
   addDeck = () => {
-    const { navigation } = this.props;
-    this.setState( { newDeckName: ""});
-    // TODO Add deck to Async
-    // TODO add deck to Redux store
+    const { navigation, handleAddDeck, createDeck, decks } = this.props;
+    const {newDeckName} = this.state;
+
+    // TODO change back to handleCreateDeck
+    createDeck(newDeckName )
+
     navigation.navigate("All Decks")
   }
 
@@ -36,7 +40,34 @@ class AddDeck extends React.Component{
   }
 }
 
-export default AddDeck;
+const mapStateToProps = (state) => {
+  return{
+    decks: state.decks
+  }
+}
+
+const mapDispatchToProps = {
+  handleCreateDeck,
+  createDeck
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(AddDeck);
+
+
+
+
+//
+// export default connect({
+//   mapStateToProps,
+//   mapDispatchToProps
+// })(AddCard);
+
+
+
+
 
 const styles = StyleSheet.create({
   container: {
