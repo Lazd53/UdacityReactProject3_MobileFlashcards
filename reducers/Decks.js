@@ -4,14 +4,7 @@ import {
   DELETE_DECK,
   ADD_CARD
 } from '../actions/DecksAction';
-
-function formatDeck (deckId, deckName){
-  return {
-    id: deckId,
-    cards: [],
-    name: deckName
-  }
-}
+import { formatDeck } from '../utils/helpers' 
 
 export function Decks ( state = [], action){
   switch(action.type){

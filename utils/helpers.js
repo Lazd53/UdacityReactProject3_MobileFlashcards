@@ -11,3 +11,11 @@ export function isIOS (){
 export function generateID () {
   return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
 }
+
+export function formatDeck (deckId, deckName){
+  return {
+    id: deckId,
+    cards: [],
+    name: deckName
+  }
+}
