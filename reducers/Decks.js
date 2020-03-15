@@ -4,7 +4,7 @@ import {
   DELETE_DECK,
   ADD_CARD
 } from '../actions/DecksAction';
-import { formatDeck } from '../utils/helpers' 
+import { formatDeck } from '../utils/helpers'
 
 export function Decks ( state = [], action){
   switch(action.type){

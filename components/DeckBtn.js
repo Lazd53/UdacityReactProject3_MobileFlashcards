@@ -5,7 +5,7 @@ import { View, Button, Text, StyleSheet, TouchableWithoutFeedback } from 'react-
 export default function DeckBtn ({DeckInfo, callback}) {
 
   return (
-    <TouchableWithoutFeedback onPress={()=> callback()}>
+    <TouchableWithoutFeedback onPress={()=> callback(DeckInfo.id)}>
       <View style = {styles.deck}>
         <Text style={styles.deckName}> {DeckInfo.name} </Text>
       </View>

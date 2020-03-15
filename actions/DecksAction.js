@@ -41,7 +41,7 @@ function addCard (deckId, questionObject){
   }
 }
 
-function setCurrentDeck (deckId) {
+export function setCurrentDeck (deckId) {
   return {
     type: SET_CURRENT_DECK,
     deckId

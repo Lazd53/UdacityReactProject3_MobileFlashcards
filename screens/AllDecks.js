@@ -6,6 +6,9 @@ import { connect } from 'react-redux';
 import DeckBtn from '../components/DeckBtn';
 import NavBtn from '../components/NavBtn';
 
+// Import Redux actions
+import { setCurrentDeck } from '../actions/DecksAction';
+
 class AllDecks extends React.Component {
 
   navigateToAddDeck = () => {
@@ -13,9 +16,10 @@ class AllDecks extends React.Component {
     navigation.navigate('Add a Deck');
   }
 
-  navigateToSingleDeck = () => {
-    const { navigation } = this.props;
-
+  navigateToSingleDeck = (deckId) => {
+    const { navigation, setCurrentDeck } = this.props;
+    console.log(deckId)
+    setCurrentDeck(deckId)
     navigation.navigate('Single Deck')
   }
 
@@ -29,25 +33,7 @@ class AllDecks extends React.Component {
 
   render(){
     const { navigation, decks } = this.props
-    const allDecks = {
-      multiplication: {
-        title: "Multiplication"
-      },
-      division: {
-        title: "Division"
-      },
-      biology: {
-        title: "Biology"
-      },
-      wands: {
-        title: "Wands"
-      },
-      defense: {
-        title: "Defense Against the Dark Arts"
-      }
-    }
 
-    const keys = Object.keys(allDecks);
     return (
       <View style={styles.container}>
         <ScrollView style={styles.scrollViewStyling}>
@@ -70,7 +56,14 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(AllDecks);
+const mapDispatchToProps =  {
+  setCurrentDeck
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(AllDecks);
 
 const styles = StyleSheet.create({
   container: {
@@ -98,6 +91,3 @@ const styles = StyleSheet.create({
     textAlign: 'center'
   }
 });
-
-// { keys.map( key => {
-//   return <DeckBtn key={key} callback = {this.navigateToSingleDeck} DeckInfo = {allDecks[key]}/>})}
