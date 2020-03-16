@@ -1,4 +1,4 @@
-import {SET_CURRENT_DECK} from '../actions/DecksAction';
+import {SET_CURRENT_DECK, CREATE_DECK} from '../actions/DecksAction';
 import {SET_CURRENT_GROUP} from '../actions/GroupsAction';
 import {CLEAR_CURRENT_SELECTION} from '../actions/SharedAction';
 
@@ -19,6 +19,11 @@ export function CurrentSelection ( state = clearedSelection, action){
         id: action.groupId,
         type: "deck"
       };
+    case CREATE_DECK:
+      return {
+        id: action.id,
+        type: "deck"
+      }
     default:
       return state;
   }

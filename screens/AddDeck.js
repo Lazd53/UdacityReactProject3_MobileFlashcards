@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 
 // Import Components
 import NavBtn from '../components/NavBtn';
-import { handleCreateDeck, createDeck } from "../actions/DecksAction";
+import { handleCreateDeck, createDeck, setCurrentDeck } from "../actions/DecksAction";
 
 class AddDeck extends React.Component{
   state = { newDeckName: ""}
@@ -16,9 +16,8 @@ class AddDeck extends React.Component{
     const {newDeckName} = this.state;
 
     // TODO change back to handleCreateDeck
-    createDeck(newDeckName )
-
-    navigation.navigate("All Decks")
+    createDeck(newDeckName)
+    navigation.navigate("Single Deck")
   }
 
   controlText = (newText) => {
@@ -48,7 +47,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
   handleCreateDeck,
-  createDeck
+  createDeck,
+  setCurrentDeck
 }
 
 export default connect(
