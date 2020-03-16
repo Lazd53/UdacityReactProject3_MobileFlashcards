@@ -18,22 +18,23 @@ class AllDecks extends React.Component {
 
   navigateToSingleDeck = (deckId) => {
     const { navigation, setCurrentDeck } = this.props;
-    console.log(deckId)
     setCurrentDeck(deckId)
     navigation.navigate('Single Deck')
   }
 
   renderDecks = (decks) => {
-    let allDecks = decks.map( (deck) => {
-      const deckInfo = Object.values(deck)[0];
+    let keys = Object.keys(decks);
+    let allDecks = keys.map( key => {
+      const deckInfo = decks[key]
+      console.log(deckInfo)
       return (<DeckBtn key={deckInfo.id} callback = {this.navigateToSingleDeck} DeckInfo = {deckInfo}/>)
-    } )
+    })
     return allDecks
   }
 
   render(){
     const { navigation, decks } = this.props
-
+    console.log(this.props.state)
     return (
       <View style={styles.container}>
         <ScrollView style={styles.scrollViewStyling}>
@@ -52,7 +53,8 @@ class AllDecks extends React.Component {
 
 const mapStateToProps = (state) => {
   return{
-    decks: state.Decks
+    decks: state.Decks,
+    state: state
   }
 }
 

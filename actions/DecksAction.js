@@ -1,6 +1,7 @@
 export const CREATE_DECK = "CREATE_DECK";
 export const EDIT_DECK = "EDIT_DECK";
-export const DELETE_DECK = "DELETE_DECK";
+// FUTURE BUILD
+// export const DELETE_DECK = "DELETE_DECK";
 export const ADD_CARD = "ADD_CARD";
 export const SET_CURRENT_DECK = "SET_CURRENT_DECK";
 
@@ -26,18 +27,19 @@ function editDeck (deckId , newDeckName ){
   }
 }
 
-function deleteDeck (deckId) {
-  return {
-    type: DELETE_DECK,
-    deckId
-  }
-}
+// FUTURE BUILD
+// function deleteDeck (deckId) {
+//   return {
+//     type: DELETE_DECK,
+//     deckId
+//   }
+// }
 
-function addCard (deckId, questionObject){
+export function addCard (deckId, cardObject){
   return {
     type: ADD_CARD,
-    deckId,
-    questionObject
+    cardObject,
+    deckId
   }
 }
 
@@ -62,11 +64,3 @@ export function handleCreateDeck ( deckId, deck){
     )
   }
 }
-// export function handleCreateDeck ( deckId, deck){
-//   return (dispatch) => {
-//     let id = generateID();
-//     return (
-//       let returnObject = { id: deck}
-//     )
-//   }
-// }
