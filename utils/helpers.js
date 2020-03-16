@@ -19,3 +19,18 @@ export function formatDeck (deckId, deckName){
     name: deckName
   }
 }
+
+export function formatCard ( question, answer){
+  let id = generateID();
+  return {
+    [id] : {
+      id,
+      question,
+      answer
+    }
+  }
+}
+
+export function filterForCurrentSelection(Items, CurrentSelectionID){
+  return Object.values(Items.filter( item => Object.keys(item)[0] === CurrentSelectionID )[0])[0]
+}

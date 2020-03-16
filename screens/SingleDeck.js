@@ -5,6 +5,9 @@ import { connect } from 'react-redux';
 // Import Components
 import NavBtn from '../components/NavBtn';
 
+// Import utils
+import {filterForCurrentSelection} from '../utils/helpers'
+
 class SingleDeck extends React.Component{
 
   render(){
@@ -26,11 +29,10 @@ class SingleDeck extends React.Component{
 }
 
 const mapStateToProps = ( state ) => {
-  const {Decks, CurrentSelection} = state
+  const {Decks, CurrentSelection} = state;
+  const currentDeck = filterForCurrentSelection(Decks, CurrentSelection.id)
   return {
-    Decks,
-    CurrentSelection: CurrentSelection.id,
-    currentDeck: Object.values(Decks.filter( deck => Object.keys(deck)[0] === CurrentSelection.id )[0])[0]
+    currentDeck
   }
 }
 
