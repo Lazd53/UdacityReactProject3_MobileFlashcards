@@ -12,6 +12,7 @@ class SingleDeck extends React.Component{
 
   render(){
     const { navigation, currentDeck } = this.props;
+    console.log(currentDeck)
     return (
       <View style={styles.container}>
         <View style={styles.txtContainer}>
@@ -19,9 +20,8 @@ class SingleDeck extends React.Component{
           <Text style={styles.numCards}> {currentDeck.cards.length} cards </Text>
         </View>
         <View style={styles.btnContainer}>
-          <NavBtn text="Start Quiz" callback={()=>{}} />
           <NavBtn text="Add Card" callback={() => navigation.navigate("Add Card")} />
-          <NavBtn text="Delete Deck" callback={()=>navigation.navigate("Delete Deck")} />
+          <NavBtn text="Start Quiz" callback={()=>{}} />
         </View>
       </View>
     );
@@ -30,9 +30,8 @@ class SingleDeck extends React.Component{
 
 const mapStateToProps = ( state ) => {
   const {Decks, CurrentSelection} = state;
-  const currentDeck = filterForCurrentSelection(Decks, CurrentSelection.id)
   return {
-    currentDeck
+    currentDeck: Decks[CurrentSelection.id]
   }
 }
 
@@ -48,7 +47,7 @@ const styles = StyleSheet.create({
     paddingTop: 40
   },
   btnContainer: {
-    height: 170,
+    height: 110,
     width: "100%",
     justifyContent: "space-between",
     alignItems: "center"
