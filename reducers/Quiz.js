@@ -9,7 +9,8 @@ import {
 const clearedQuiz = {
   questions: [],
   answeredCorrect:[],
-  answeredWrong:[]
+  answeredWrong:[],
+  totalQuestions: 0
 }
 
 export function Quiz ( state = clearedQuiz, action){
@@ -18,17 +19,20 @@ export function Quiz ( state = clearedQuiz, action){
       return {
         questions: action.questions,
         answeredCorrect: [],
-        answeredWrong: []
+        answeredWrong: [],
+        totalQuestions: action.questions.length
       };
     case ANSWER_CORRECT:
       return {
         ...state,
-          ...state.questions.filter( question => question.id)
+          questions: state.questions.slice(1),
+          answeredCorrect: state.answeredCorrect.concat(state.questions.slice(0,1))
       };
     case ANSWER_WRONG:
       return {
         ...state,
-          ...state.questions.filter( question => question.id)
+          questions: state.questions.slice(1),
+          answeredWrong: state.answeredWrong.concat(state.questions.slice(0,1))
       }
     case CLEAR_QUIZ:
       return clearedQuiz;
