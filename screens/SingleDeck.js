@@ -6,13 +6,20 @@ import { connect } from 'react-redux';
 import NavBtn from '../components/NavBtn';
 
 // Import utils
-import {filterForCurrentSelection} from '../utils/helpers'
+import {filterForCurrentSelection} from '../utils/helpers';
+
+import { setQuiz } from '../actions/QuizAction';
 
 class SingleDeck extends React.Component{
 
+  handleStartQuiz = () => {
+    const {currentDeck, navigation, setQuiz} = this.props;
+    setQuiz(currentDeck.cards)
+    navigation.navigate("Quizzes")
+  }
+
   render(){
     const { navigation, currentDeck } = this.props;
-    console.log(currentDeck)
     return (
       <View style={styles.container}>
         <View style={styles.txtContainer}>
@@ -21,7 +28,7 @@ class SingleDeck extends React.Component{
         </View>
         <View style={styles.btnContainer}>
           <NavBtn text="Add Card" callback={() => navigation.navigate("Add Card")} />
-          <NavBtn text="Start Quiz" callback={()=>{}} />
+          <NavBtn text="Start Quiz" callback={this.handleStartQuiz} />
         </View>
       </View>
     );
@@ -35,7 +42,11 @@ const mapStateToProps = ( state ) => {
   }
 }
 
-export default connect(mapStateToProps)(SingleDeck);
+const mapDispatchToProps = {
+  setQuiz
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SingleDeck);
 
 const styles = StyleSheet.create({
   container: {
