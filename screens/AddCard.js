@@ -7,7 +7,13 @@ import { connect } from 'react-redux';
 import NavBtn from '../components/NavBtn';
 
 // Import Actions
-// import { handleAddCard } from '../actions/AddCard';
+import { addCard } from "../actions/DecksAction";
+
+// Import Helpers
+import {
+  formatCard,
+  filterForCurrentSelection
+} from '../utils/helpers'
 
 
 class AddCard extends React.Component{
@@ -16,9 +22,11 @@ class AddCard extends React.Component{
           }
 
   handleSubmit = () => {
-    const { navigation } = this.props;
+    const { navigation, currentDeck, dispatch } = this.props;
+    const { newCardQuestion, newCardAnswer} = this.state
+    const newCard = formatCard( newCardQuestion, newCardAnswer )
+    dispatch(addCard( currentDeck.id, newCard ));
     // TODO Add card to Async
-    // TODO add card to Redux store
     this.setState( { newCardName: "", newCardAnswer: ""});
     navigation.navigate("Single Deck")
   }
@@ -54,21 +62,22 @@ class AddCard extends React.Component{
   }
 }
 
-// const mapStateToProps = (state) => {
-//   return{
-//     state: state
-//   }
-// }
-//
-// const mapDispatchToProps = { addCard }
-//
-// export default connect({
-//   mapStateToProps,
-//   mapDispatchToProps
-// })(AddCard);
+const mapStateToProps = (state) => {
+  const {Decks, CurrentSelection} = state;
+  return {
+    currentDeck: Decks[CurrentSelection.id]
+  }
+}
+
+const mapDispatchToProps = {
+  addCard
+}
+
+export default connect(
+  mapStateToProps
+)(AddCard);
 
 
-export default AddCard;
 
 const styles = StyleSheet.create({
   container: {

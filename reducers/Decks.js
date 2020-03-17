@@ -40,8 +40,7 @@ export function Decks ( state = testData, action){
       return {...state,
               [deckId]:{
                 ...state[deckId],
-                cards: []
-                // cards: state[deckId].cards.concat(cardObject)
+                cards: state[deckId].cards.concat([cardObject])
               }
             }
     default:
