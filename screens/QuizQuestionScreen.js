@@ -5,19 +5,26 @@ import { connect } from 'react-redux';
 // Components
 import NavBtn from '../components/NavBtn';
 
+// redux
+import {answerCorrect, answerWrong} from '../actions/QuizAction';
+
 class QuizQuestionScreen extends React.Component {
-  state = { question: true}
+  state = { question: true, timeToNavigate: false}
 
   showAnswer = () =>{
     this.setState({question: false})
   }
 
   handleWrongAnswer = () => {
-    console.log("oops")
+    const {answerWrong, currentQuestion, questionsLeft, navigation} = this.props;
+    answerWrong( currentQuestion.id );
+    questionsLeft === 1 && navigation.navigate("QuizScores")
   }
 
   handleRightAnswer = () => {
-    console.log("hell yeah!")
+    const {answerWrong, currentQuestion, questionsLeft, navigation} = this.props;
+    answerCorrect( currentQuestion.id );
+    questionsLeft === 1 && navigation.navigate("QuizScores")
   }
 
   render(){
@@ -46,14 +53,20 @@ class QuizQuestionScreen extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
+    questionsLeft: state.Quiz.questions.length,
+    totalQuestions: state.Quiz.totalQuestions,
     currentQuestion: Object.values(state.Quiz.questions[0])[0]
   }
-  // state: state
+}
 
+const mapDispatchToProps = {
+  answerCorrect,
+  answerWrong
 }
 
 export default connect(
-  mapStateToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(QuizQuestionScreen);
 
 const styles = StyleSheet.create({
