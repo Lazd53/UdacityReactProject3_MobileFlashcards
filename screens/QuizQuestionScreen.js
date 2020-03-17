@@ -1,20 +1,42 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import { connect } from 'react-redux';
 
 // Components
 import NavBtn from '../components/NavBtn';
 
 class QuizQuestionScreen extends React.Component {
+  state = { question: true}
+
+  showAnswer = () =>{
+    this.setState({question: false})
+  }
+
+  handleWrongAnswer = () => {
+    console.log("oops")
+  }
+
+  handleRightAnswer = () => {
+    console.log("hell yeah!")
+  }
+
   render(){
-    const { navigation } = this.props;
+    const { navigation, currentQuestion } = this.props;
     return (
       <View style={styles.container}>
         <View style={styles.card}>
           <Text style={styles.deckName}>Defense Against the Dark Arts</Text>
-          <Text style={styles.question}>What is a horcrux?</Text>
+          <Text style={styles.question}>Q: {currentQuestion.question}</Text>
+          {!this.state.question && <Text style={styles.answer}>A: {currentQuestion.answer}</Text>}
         </View>
         <View style={styles.buttons}>
-          <NavBtn text="Show Answer" callback={()=>navigation.navigate("QuizAnswer")} />
+          {this.state.question
+            ? <NavBtn text="Show Answer" callback={this.showAnswer} />
+            : <>
+                <NavBtn text="I was right!" callback={this.handleRightAnswer} />
+                <NavBtn text="Maybe next time..." callback={this.handleWrongAnswer} />
+              </>
+          }
         </View>
       </View>
 
@@ -22,7 +44,17 @@ class QuizQuestionScreen extends React.Component {
   }
 }
 
-export default QuizQuestionScreen;
+const mapStateToProps = (state) => {
+  return {
+    currentQuestion: Object.values(state.Quiz.questions[0])[0]
+  }
+  // state: state
+
+}
+
+export default connect(
+  mapStateToProps
+)(QuizQuestionScreen);
 
 const styles = StyleSheet.create({
   container: {
@@ -49,6 +81,10 @@ const styles = StyleSheet.create({
     marginBottom: 30
   },
   question: {
+    fontSize: 20,
+    textAlign: 'center'
+  },
+  answer: {
     fontSize: 18,
     textAlign: 'center'
   },
@@ -57,6 +93,6 @@ const styles = StyleSheet.create({
     marginTop: 20,
     alignItems: "center",
     height: 110,
-    justifyContent: "flex-end"
+    justifyContent: "space-between"
   }
 })
