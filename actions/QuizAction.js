@@ -22,3 +22,10 @@ export function answerWrong (questionId){
     questionId
   }
 }
+
+export function handleRetake ( questions, navigation) {
+  navigation.navigate("QuizQuestion");
+  return (dispatch) => {
+    return dispatch( setQuiz(questions) );
+  }
+}
