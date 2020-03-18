@@ -9,7 +9,7 @@ import NavBtn from '../components/NavBtn';
 import {answerCorrect, answerWrong} from '../actions/QuizAction';
 
 class QuizQuestionScreen extends React.Component {
-  state = { question: true, timeToNavigate: false}
+  state = { question: true}
 
   showAnswer = () =>{
     this.setState({question: false})
@@ -17,12 +17,14 @@ class QuizQuestionScreen extends React.Component {
 
   handleWrongAnswer = () => {
     const {dispatch, currentQuestion} = this.props;
-    dispatch(answerWrong( currentQuestion.id ));
+    this.setState({question: true})
+    dispatch (answerWrong( currentQuestion.id ))
   }
 
   handleRightAnswer = () => {
     const {dispatch, currentQuestion} = this.props;
-    dispatch(answerCorrect( currentQuestion.id ));
+    this.setState({question: true})
+    dispatch (answerCorrect( currentQuestion.id ))
   }
 
   render(){
@@ -54,10 +56,9 @@ const mapStateToProps = (state) => {
   return {
     questionsLeft: state.Quiz.questions.length,
     totalQuestions: state.Quiz.totalQuestions,
-    currentQuestion:
-      state.Quiz.questions.length === 0
-      ? false
-      : Object.values(state.Quiz.questions[0])[0]
+    currentQuestion: state.Quiz.questions.length === 0
+          ? false
+          : Object.values(state.Quiz.questions[0])[0]
   }
 }
 
