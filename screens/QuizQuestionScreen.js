@@ -16,19 +16,18 @@ class QuizQuestionScreen extends React.Component {
   }
 
   handleWrongAnswer = () => {
-    const {answerWrong, currentQuestion, questionsLeft, navigation} = this.props;
-    answerWrong( currentQuestion.id );
-    questionsLeft === 1 && navigation.navigate("QuizScores")
+    const {dispatch, currentQuestion} = this.props;
+    dispatch(answerWrong( currentQuestion.id ));
   }
 
   handleRightAnswer = () => {
-    const {answerWrong, currentQuestion, questionsLeft, navigation} = this.props;
-    answerCorrect( currentQuestion.id );
-    questionsLeft === 1 && navigation.navigate("QuizScores")
+    const {dispatch, currentQuestion} = this.props;
+    dispatch(answerCorrect( currentQuestion.id ));
   }
 
   render(){
-    const { navigation, currentQuestion } = this.props;
+    const { navigation, currentQuestion, questionsLeft } = this.props;
+    !currentQuestion && navigation.navigate("QuizScores");
     return (
       <View style={styles.container}>
         <View style={styles.card}>
@@ -55,7 +54,10 @@ const mapStateToProps = (state) => {
   return {
     questionsLeft: state.Quiz.questions.length,
     totalQuestions: state.Quiz.totalQuestions,
-    currentQuestion: Object.values(state.Quiz.questions[0])[0]
+    currentQuestion:
+      state.Quiz.questions.length === 0
+      ? false
+      : Object.values(state.Quiz.questions[0])[0]
   }
 }
 
@@ -65,8 +67,7 @@ const mapDispatchToProps = {
 }
 
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+  mapStateToProps
 )(QuizQuestionScreen);
 
 const styles = StyleSheet.create({
