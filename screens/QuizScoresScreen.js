@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 // Components
 import NavBtn from '../components/NavBtn';
+import ResultsContainer from '../components/ResultsContainer';
 
 import { handleRetake } from '../actions/QuizAction';
 
@@ -25,11 +26,11 @@ class QuizScoresScreen extends React.Component {
 
   render(){
     const {correctAnswers, answeredWrong, totalQuestions} = this.props;
-    console.log(this.props)
     return (
       <View style={styles.container}>
         <View style={styles.resultsContainer}>
-          <Text> You got {correctAnswers.length} out of {totalQuestions} correct! </Text>
+          <Text style={styles.text}> You got {correctAnswers.length} out of {totalQuestions} correct! </Text>
+          <ResultsContainer/>
         </View>
         <View style={styles.buttonContainer}>
           <NavBtn text="Retake Quiz" callback={this.handleRetakeQuiz} />
@@ -64,10 +65,15 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
-    paddingBottom: 20
+    paddingBottom: 20,
+    paddingTop: 20
   },
   resultsContainer: {
-    flex: 1
+    flex: 1,
+    width: "70%"
+  },
+  text: {
+    fontSize: 24
   },
   buttonContainer: {
     width: "100%",
