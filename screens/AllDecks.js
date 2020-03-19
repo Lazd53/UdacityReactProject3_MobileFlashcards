@@ -26,7 +26,6 @@ class AllDecks extends React.Component {
     let keys = Object.keys(decks);
     let allDecks = keys.map( key => {
       const deckInfo = decks[key]
-      console.log(deckInfo)
       return (<DeckBtn key={deckInfo.id} callback = {this.navigateToSingleDeck} DeckInfo = {deckInfo}/>)
     })
     return allDecks
@@ -34,7 +33,6 @@ class AllDecks extends React.Component {
 
   render(){
     const { navigation, decks } = this.props
-    console.log(this.props.state)
     return (
       <View style={styles.container}>
         <ScrollView style={styles.scrollViewStyling}>

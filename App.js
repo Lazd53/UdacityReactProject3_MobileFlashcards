@@ -8,7 +8,6 @@ import BottomTabNav from './navigation/BottomTabNav';
 import reducers from './reducers';
 import middleware from './middleware';
 
-const testchange = "test"
 const store = createStore(reducers, middleware);
 
 export default function App() {
