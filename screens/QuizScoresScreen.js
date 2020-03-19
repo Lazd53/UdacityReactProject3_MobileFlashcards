@@ -21,11 +21,11 @@ class QuizScoresScreen extends React.Component {
 
   handleReturnHome = () => {
     const {navigation} = this.props;
-    navigation.navigate("All Decks")
+    navigation.navigate("Decks")
   }
 
   render(){
-    const {correctAnswers, answeredWrong, totalQuestions} = this.props;
+    const {correctAnswers, answeredWrong, totalQuestions, CurrentDeck} = this.props;
     return (
       <View style={styles.container}>
         <View style={styles.resultsContainer}>
@@ -35,7 +35,7 @@ class QuizScoresScreen extends React.Component {
         <View style={styles.buttonContainer}>
           <NavBtn text="Retake Quiz" callback={this.handleRetakeQuiz} />
           <NavBtn text="Retake Missed Questions" callback={this.handleRetakeMissed}  />
-          <NavBtn text="Return To Home Page" callback={this.handleReturnHome} />
+          <NavBtn text={"Return to " + CurrentDeck } callback={this.handleReturnHome} />
         </View>
       </View>
     )
@@ -46,8 +46,8 @@ const mapStateToProps = (state) => {
   return {
     correctAnswers: state.Quiz.answeredCorrect,
     answeredWrong: state.Quiz.answeredWrong,
-    totalQuestions: state.Quiz.totalQuestions
-
+    totalQuestions: state.Quiz.totalQuestions,
+    CurrentDeck: state.CurrentSelection.name
   }
 }
 
