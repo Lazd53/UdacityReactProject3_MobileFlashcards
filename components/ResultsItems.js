@@ -7,9 +7,9 @@ const ResultsItems = ({results, title}) => {
       <Text style={styles.title}> {title} </Text>
       {results.map( result => {
         const r = Object.values(result)[0]
-        return <View style={styles.questionGroup} >
-                <Text style={styles.questions} key={"Q" + r.id}> Q: {r.question}</Text>
-                <Text style={styles.answers} key={"A" + r.id}> A: {r.answer}</Text>
+        return <View style={styles.questionGroup} key={r.id} >
+                <Text style={styles.questions}> Q: {r.question}</Text>
+                <Text style={styles.answers}> A: {r.answer}</Text>
                </View>
         })
       }
