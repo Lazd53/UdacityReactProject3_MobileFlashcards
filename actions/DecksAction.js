@@ -43,10 +43,11 @@ export function addCard (deckId, cardObject){
   }
 }
 
-export function setCurrentDeck (deckId) {
+export function setCurrentDeck (deck) {
   return {
     type: SET_CURRENT_DECK,
-    deckId
+    deckId: deck.id,
+    deckName: deck.name
   }
 }
 
