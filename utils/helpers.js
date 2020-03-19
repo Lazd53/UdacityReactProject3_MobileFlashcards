@@ -20,13 +20,14 @@ export function formatDeck (deckId, deckName){
   }
 }
 
-export function formatCard ( question, answer){
+export function formatCard ( question, answer, deckName){
   let id = generateID();
   return {
     [id] : {
       id,
       question,
-      answer
+      answer,
+      deckName
     }
   }
 }

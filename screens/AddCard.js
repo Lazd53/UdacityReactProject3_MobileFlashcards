@@ -24,7 +24,7 @@ class AddCard extends React.Component{
   handleSubmit = () => {
     const { navigation, currentDeck, dispatch } = this.props;
     const { newCardQuestion, newCardAnswer} = this.state
-    const newCard = formatCard( newCardQuestion, newCardAnswer )
+    const newCard = formatCard( newCardQuestion, newCardAnswer, currentDeck.name )
     dispatch(addCard( currentDeck.id, newCard ));
     // TODO Add card to Async
     this.setState( { newCardName: "", newCardAnswer: ""});

@@ -33,10 +33,11 @@ class QuizQuestionScreen extends React.Component {
     return (
       <View style={styles.container}>
         <View style={styles.card}>
-          <Text style={styles.deckName}>Defense Against the Dark Arts</Text>
+          <Text style={styles.deckName}>{currentQuestion.deckName}</Text>
           <Text style={styles.question}>Q: {currentQuestion.question}</Text>
           {!this.state.question && <Text style={styles.answer}>A: {currentQuestion.answer}</Text>}
         </View>
+        <Text style={styles.qLeft}> {questionsLeft} questions left!</Text>
         <View style={styles.buttons}>
           {this.state.question
             ? <NavBtn text="Show Answer" callback={this.showAnswer} />
@@ -109,5 +110,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
     height: 110,
     justifyContent: "space-between"
+  },
+  qLeft: {
+    width: "70%",
+    textAlign: "right"
   }
 })
