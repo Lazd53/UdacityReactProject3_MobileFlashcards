@@ -14,10 +14,12 @@ class AddDeck extends React.Component{
   addDeck = () => {
     const { navigation, handleAddDeck, createDeck, decks } = this.props;
     const {newDeckName} = this.state;
+    if (newDeckName !== ""){
+      handleCreateDeck(newDeckName)
+      // navigation.navigate("Single Deck")
+    }
 
-    // TODO change back to handleCreateDeck
-    createDeck(newDeckName)
-    navigation.navigate("Single Deck")
+
   }
 
   controlText = (newText) => {
@@ -55,18 +57,6 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(AddDeck);
-
-
-
-
-//
-// export default connect({
-//   mapStateToProps,
-//   mapDispatchToProps
-// })(AddCard);
-
-
-
 
 
 const styles = StyleSheet.create({
