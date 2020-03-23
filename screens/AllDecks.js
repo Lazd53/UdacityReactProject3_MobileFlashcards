@@ -37,7 +37,7 @@ class AllDecks extends React.Component {
       <View style={styles.container}>
         <ScrollView style={styles.scrollViewStyling}>
           <View style={styles.decksContainer}>
-            {decks.length === 0
+            {Object.keys(decks).length === 0
                 ? <Text style={styles.addDeckCallToAction}>Add a deck to start!</Text>
                 : this.renderDecks( this.props.decks )
             }
