@@ -22,6 +22,12 @@ export function CurrentSelection ( state = clearedSelection, action){
         name: action.groupName,
         type: "deck"
       };
+    case CREATE_DECK:
+      return {
+        id: action.id ,
+        name: action.deckObj.name , 
+        type: "deck"
+      }
     default:
       return state;
   }

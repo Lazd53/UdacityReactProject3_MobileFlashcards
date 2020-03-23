@@ -8,6 +8,9 @@ import { connect } from 'react-redux';
 import NavBtn from '../components/NavBtn';
 import { handleCreateDeck, createDeck, setCurrentDeck } from "../actions/DecksAction";
 
+import {getDecks, AddDeckToDB} from '../utils/AsyncStor';
+import { generateID, formatDeck } from '../utils/helpers';
+
 class AddDeck extends React.Component{
   state = { newDeckName: ""}
 
@@ -15,11 +18,21 @@ class AddDeck extends React.Component{
     const { navigation, handleAddDeck, createDeck, decks } = this.props;
     const {newDeckName} = this.state;
     if (newDeckName !== ""){
-      handleCreateDeck(newDeckName)
-      // navigation.navigate("Single Deck")
+      const newID = generateID();
+      const newDeckObj = formatDeck(newID, newDeckName )
+      const newDecksObj = {...decks, [newID]: newDeckObj}
+      createDeck(newDeckObj, newID);
+      AsyncStorage.setItem('Decks', JSON.stringify(newDecksObj))
+      navigation.navigate("Single Deck")
     }
+  }
 
-
+  tempGetStorage = () =>{
+    AsyncStorage.getItem("Decks")
+      .then((results) => {
+        const data = JSON.parse(results)
+        console.log(data)
+      })
   }
 
   controlText = (newText) => {
@@ -36,6 +49,7 @@ class AddDeck extends React.Component{
           value = {this.state.newDeckName}
         />
         <NavBtn text="Add Deck" callback={this.addDeck} />
+        <NavBtn text="temp current DB" callback={this.tempGetStorage} />
       </View>
     );
   }
@@ -43,12 +57,11 @@ class AddDeck extends React.Component{
 
 const mapStateToProps = (state) => {
   return{
-    decks: state.decks
+    decks: state.Decks
   }
 }
 
 const mapDispatchToProps = {
-  handleCreateDeck,
   createDeck,
   setCurrentDeck
 }

@@ -2,34 +2,17 @@ import {
   CREATE_DECK,
   EDIT_DECK,
   DELETE_DECK,
-  ADD_CARD
+  ADD_CARD,
+  SET_DECKS
 } from '../actions/DecksAction';
-import { formatDeck } from '../utils/helpers'
 
-let testData = {
-  test1: {
-    id: "test1",
-    cards: [],
-    name: "DeckOne"
-  },
-  test2: {
-    id: "test2",
-    cards: [],
-    name: "DeckTwo"
-  },
-  test3: {
-    id: "test3",
-    cards: [],
-    name: "DeckThree"
-  },
-}
-
-export function Decks ( state = testData, action){
+export function Decks ( state = {}, action){
   switch(action.type){
+    case SET_DECKS :
+      return action.decksObj
     case CREATE_DECK :
-      let {deckName, id} = action;
-      let formattedDeck = formatDeck(id, deckName)
-      return {...state, [id]: formattedDeck}
+      let {deckObj, id} = action;
+      return {...state, [id]: deckObj}
     // FUTURE VERSION
     // case EDIT_DECK :
     //   return state;

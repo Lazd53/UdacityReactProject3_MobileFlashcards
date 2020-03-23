@@ -4,28 +4,31 @@ export const EDIT_DECK = "EDIT_DECK";
 // export const DELETE_DECK = "DELETE_DECK";
 export const ADD_CARD = "ADD_CARD";
 export const SET_CURRENT_DECK = "SET_CURRENT_DECK";
+export const SET_DECKS = "SET_DECKS";
 
-import { generateID } from '../utils/helpers';
-import { AsyncStorage } from 'react-native';
+export function setDecks ( decksObj ){
+  return {
+    type: SET_DECKS,
+    decksObj
+  }
+}
 
-
-
-export function createDeck ( deckName ){
-  let newID = generateID();
+export function createDeck ( deckObj, id ){
   return {
     type: CREATE_DECK,
-    id: generateID(),
-    deckName
+    id,
+    deckObj
   }
 }
 
-function editDeck (deckId , newDeckName ){
-  return {
-    type: EDIT_DECK,
-    deckId,
-    newDeckName
-  }
-}
+//  FUTURE BUILD
+// function editDeck (deckId , newDeckName ){
+//   return {
+//     type: EDIT_DECK,
+//     deckId,
+//     newDeckName
+//   }
+// }
 
 // FUTURE BUILD
 // function deleteDeck (deckId) {
@@ -48,20 +51,5 @@ export function setCurrentDeck (deck) {
     type: SET_CURRENT_DECK,
     deckId: deck.id,
     deckName: deck.name
-  }
-}
-
-export function handleCreateDeck ( deckId, deck){
-  return (dispatch) => {
-    return (
-      storeData = async () => {
-        try {
-          await AsyncStorage.setItem( deckId, deck)
-            .then( () => dispatch(createDeck( deckId, deck )) )
-        } catch(e){
-          console.alert("that didn't go well!")
-        }
-      }
-    )
   }
 }
