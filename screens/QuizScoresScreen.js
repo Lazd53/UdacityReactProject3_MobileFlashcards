@@ -5,10 +5,18 @@ import { connect } from 'react-redux';
 // Components
 import NavBtn from '../components/NavBtn';
 import ResultsContainer from '../components/ResultsContainer';
-
+// Action
 import { handleRetake } from '../actions/QuizAction';
 
+import {clearLocalNotifications, setLocalNotification} from '../utils/helpers'
+
+
 class QuizScoresScreen extends React.Component {
+
+  componentDidMount(){
+    clearLocalNotifications()
+      .then(setLocalNotification)
+  }
 
   handleRetakeQuiz = () => {
     const { correctAnswers, answeredWrong, handleRetake, navigation} = this.props;
