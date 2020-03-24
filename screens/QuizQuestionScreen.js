@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 // Components
 import NavBtn from '../components/NavBtn';
+import QuizPickSubject from '../components/QuizPickSubject';
 
 // redux
 import {answerCorrect, answerWrong} from '../actions/QuizAction';
@@ -13,7 +14,9 @@ class QuizQuestionScreen extends React.Component {
 
   componentDidMount(){
     const {currentDeck, navigation} = this.props;
-    navigation.setOptions({title: currentDeck.name + " quiz" })
+    !currentDeck
+      ? navigation.setOptions({title: "Go pick a deck!" })
+      : navigation.setOptions({title: currentDeck.name + " quiz" })
   }
 
   showAnswer = () =>{
@@ -33,8 +36,12 @@ class QuizQuestionScreen extends React.Component {
   }
 
   render(){
-    const { navigation, currentQuestion, questionsLeft } = this.props;
-    !currentQuestion && navigation.navigate("QuizScores");
+    const { navigation, currentQuestion, currentDeck, questionsLeft } = this.props;
+    if (currentDeck === false ){
+      return ( <QuizPickSubject/> )
+    } else if (!currentQuestion) {
+       navigation.navigate("QuizScores");
+     }
     return (
       <View style={styles.container}>
         <View style={styles.card}>
@@ -60,7 +67,9 @@ class QuizQuestionScreen extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    currentDeck: state.Decks[state.CurrentSelection.id],
+    currentDeck: !state.Decks[state.CurrentSelection.id]
+      ? false
+      : state.Decks[state.CurrentSelection.id],
     questionsLeft: state.Quiz.questions.length,
     totalQuestions: state.Quiz.totalQuestions,
     currentQuestion: state.Quiz.questions.length === 0
