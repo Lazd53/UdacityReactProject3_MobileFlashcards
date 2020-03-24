@@ -12,6 +12,11 @@ import { setQuiz } from '../actions/QuizAction';
 
 class SingleDeck extends React.Component{
 
+  componentDidMount(){
+    const {currentDeck, navigation} = this.props;
+    navigation.setOptions({title: currentDeck.name })
+  }
+
   handleStartQuiz = () => {
     const {currentDeck, navigation, setQuiz} = this.props;
     setQuiz(currentDeck.cards)

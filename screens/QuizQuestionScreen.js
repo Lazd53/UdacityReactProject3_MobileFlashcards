@@ -11,6 +11,11 @@ import {answerCorrect, answerWrong} from '../actions/QuizAction';
 class QuizQuestionScreen extends React.Component {
   state = { question: true}
 
+  componentDidMount(){
+    const {currentDeck, navigation} = this.props;
+    navigation.setOptions({title: currentDeck.name + " quiz" })
+  }
+
   showAnswer = () =>{
     this.setState({question: false})
   }
@@ -55,6 +60,7 @@ class QuizQuestionScreen extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
+    currentDeck: state.Decks[state.CurrentSelection.id],
     questionsLeft: state.Quiz.questions.length,
     totalQuestions: state.Quiz.totalQuestions,
     currentQuestion: state.Quiz.questions.length === 0

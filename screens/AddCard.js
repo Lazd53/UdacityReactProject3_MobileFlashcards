@@ -21,6 +21,11 @@ class AddCard extends React.Component{
             newCardAnswer: ""
           }
 
+  componentDidMount(){
+    const {currentDeck, navigation} = this.props;
+    navigation.setOptions({title: currentDeck.name })
+  }
+
   handleSubmit = () => {
     const { navigation, currentDeck, dispatch } = this.props;
     const { newCardQuestion, newCardAnswer} = this.state
