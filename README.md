@@ -4,7 +4,7 @@ This is a digital flashcard project created for Udacity
 
 ## Description
 
-Mobile flashcards allows you to create decks of flashcards in a variety of subjects, available to you whenever you have your phone handy! Use it to brush up on your American presidents or learn some more French verbs. 
+Mobile flashcards allows you to create decks of flashcards in a variety of subjects, available to you whenever you have your phone handy! Use it to brush up on your American presidents or learn some more French verbs.
 
 ## How to get started
 
@@ -19,7 +19,7 @@ To start up your app:
 ### Decks
   The decks icon will (which will pop up automatically) leads you to a screen that has all the decks of flashcards you have. Either add a deck, or choose a deck to add a card to, or take a quiz from.
 
-## Quizzes
+### Quizzes
 
 This is where you take a quiz! At the end of a quiz you will get your results and a break down of each question you got right or wrong. You will also have the opportunity to retake either the whole test, or just the portion you got wrong.
 
