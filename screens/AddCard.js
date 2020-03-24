@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StyleSheet, TextInput, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, TextInput, TouchableOpacity, View, AsyncStorage } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { connect } from 'react-redux';
 
@@ -31,11 +31,22 @@ class AddCard extends React.Component{
     const { newCardQuestion, newCardAnswer} = this.state
     const newCard = formatCard( newCardQuestion, newCardAnswer, currentDeck.name )
     if (newCardQuestion !== "" && newCardAnswer !== ""){
+      this.addToAsync( currentDeck.id, newCard)
       dispatch(addCard( currentDeck.id, newCard ));
-      // TODO Add card to Async
       this.setState( { newCardName: "", newCardAnswer: ""});
       navigation.navigate("Single Deck")
     }
+  }
+
+  addToAsync = (deckId, card) => {
+    const { decks } = this.props;
+    const newDecksObj = {...decks,
+                          [deckId]: {
+                            ...decks[deckId],
+                              cards: decks[deckId].cards.concat([card])
+                            }
+                          };
+    AsyncStorage.mergeItem("Decks", JSON.stringify(newDecksObj))
   }
 
   handleQuestion = (newText) => {
@@ -72,6 +83,7 @@ class AddCard extends React.Component{
 const mapStateToProps = (state) => {
   const {Decks, CurrentSelection} = state;
   return {
+    decks: Decks,
     currentDeck: Decks[CurrentSelection.id]
   }
 }

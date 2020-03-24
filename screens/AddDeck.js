@@ -8,7 +8,6 @@ import { connect } from 'react-redux';
 import NavBtn from '../components/NavBtn';
 import { handleCreateDeck, createDeck, setCurrentDeck } from "../actions/DecksAction";
 
-import {getDecks, AddDeckToDB} from '../utils/AsyncStor';
 import { generateID, formatDeck } from '../utils/helpers';
 
 class AddDeck extends React.Component{
