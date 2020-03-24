@@ -19,8 +19,11 @@ class SingleDeck extends React.Component{
 
   handleStartQuiz = () => {
     const {currentDeck, navigation, setQuiz} = this.props;
-    setQuiz(currentDeck.cards)
-    navigation.navigate("Quizzes")
+    if (currentDeck.cards.length !== 0) {
+      setQuiz(currentDeck.cards)
+      navigation.navigate("Quizzes")
+    }
+
   }
 
   render(){
@@ -30,6 +33,7 @@ class SingleDeck extends React.Component{
         <View style={styles.txtContainer}>
           <Text style={styles.title}> {currentDeck.name} </Text>
           <Text style={styles.numCards}> {currentDeck.cards.length} cards </Text>
+          {currentDeck.cards.length === 0 && <Text style={styles.warning}> Maybe you need to add a card before you can take a quiz...</Text>}
         </View>
         <View style={styles.btnContainer}>
           <NavBtn text="Add Card" callback={() => navigation.navigate("Add Card")} />
@@ -79,5 +83,11 @@ const styles = StyleSheet.create({
   },
   numCards: {
     fontSize: 28
+  },
+  warning: {
+    marginTop: 20,
+    paddingLeft: 15,
+    paddingRight: 15,
+    textAlign: 'center'
   }
 });

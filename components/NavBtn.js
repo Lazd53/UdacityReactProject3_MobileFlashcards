@@ -1,13 +1,13 @@
 import React from 'react';
-import { View, Text, TouchableWithoutFeedback, StyleSheet} from 'react-native';
+import { View, Text, TouchableNativeFeedback, StyleSheet} from 'react-native';
 
 export default function NavBtn ({text, callback}) {
   return (
-    <TouchableWithoutFeedback onPress={ () => callback() }>
+    <TouchableNativeFeedback onPress={ () => callback() }>
       <View style={styles.container}>
         <Text style={styles.text}>{text}</Text>
       </View>
-    </TouchableWithoutFeedback>
+    </TouchableNativeFeedback>
   )
 }
 

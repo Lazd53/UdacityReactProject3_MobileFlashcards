@@ -1,15 +1,15 @@
 import React from 'react';
-import { View, Button, Text, StyleSheet, TouchableWithoutFeedback } from 'react-native';
+import { View, Button, Text, StyleSheet, TouchableNativeFeedback } from 'react-native';
 
 
 export default function DeckBtn ({DeckInfo, callback}) {
 
   return (
-    <TouchableWithoutFeedback onPress={()=> callback(DeckInfo)}>
+    <TouchableNativeFeedback onPress={()=> callback(DeckInfo)}>
       <View style = {styles.deck}>
         <Text style={styles.deckName}> {DeckInfo.name} </Text>
       </View>
-    </TouchableWithoutFeedback>
+    </TouchableNativeFeedback>
   )
 }
 
