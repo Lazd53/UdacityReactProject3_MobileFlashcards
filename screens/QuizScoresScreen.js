@@ -15,7 +15,7 @@ class QuizScoresScreen extends React.Component {
 
   componentDidMount(){
     const {currentDeck, navigation} = this.props;
-    navigation.setOptions({title: currentDeck.name + " quiz" })
+    navigation.setOptions({title: currentDeck + " quiz" })
     clearLocalNotifications()
       .then(setLocalNotification)
   }
@@ -54,7 +54,6 @@ class QuizScoresScreen extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    currentDeck: state.Decks[state.CurrentSelection.id],
     correctAnswers: state.Quiz.answeredCorrect,
     answeredWrong: state.Quiz.answeredWrong,
     totalQuestions: state.Quiz.totalQuestions,
