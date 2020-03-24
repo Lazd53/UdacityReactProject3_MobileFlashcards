@@ -48,7 +48,7 @@ export function clearLocalNotifications(){
 function createNotification(){
   return {
     title: "Time to quiz",
-    body: "It's been a day! Want to take a quiz?",
+    body: "It's been a day since you studied! Want to take a quiz?",
     ios: {
       sound: true
     },
