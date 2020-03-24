@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 
 // Navigation
 import DecksNav from './DecksNav';
-import GroupsNav from './GroupsNav';
+// import GroupsNav from './GroupsNav';
 import QuizzesNav from './QuizzesNav';
 
 // Components
@@ -43,18 +43,6 @@ class BottomTabNav extends React.Component{
               component={DecksNav}
               options={{
                 tabBarIcon: ()=>(<MaterialCommunityIcons size={25} name="cards"/>)
-              }}
-            />
-            <Tab.Screen
-              name="Groups"
-              component={GroupsNav}
-              options={{
-                tabBarIcon: ()=>(
-                  <View style={styles.groupsIcon}>
-                    <MaterialCommunityIcons size={25} name="cards"/>
-                    <MaterialCommunityIcons size={25} name="cards"/>
-                  </View>
-                )
               }}
             />
             <Tab.Screen
